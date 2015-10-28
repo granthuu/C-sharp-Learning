@@ -1,0 +1,4 @@
+C:\work dir\c-sharp-learning\source code\ConsoleApplication\ConsoleApplication\bin\Debug\ConsoleApplication.exe
+C:\work dir\c-sharp-learning\source code\ConsoleApplication\ConsoleApplication\bin\Debug\ConsoleApplication.pdb
+C:\work dir\c-sharp-learning\source code\ConsoleApplication\ConsoleApplication\obj\x86\Debug\ConsoleApplication.exe
+C:\work dir\c-sharp-learning\source code\ConsoleApplication\ConsoleApplication\obj\x86\Debug\ConsoleApplication.pdb
