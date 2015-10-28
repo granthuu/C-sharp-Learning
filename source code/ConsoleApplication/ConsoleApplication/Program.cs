@@ -9,9 +9,8 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Person person = Person.GetInstance();
-            Console.WriteLine("name: {0}", person.Name);
-
+            Console.WriteLine(Person.Name);
+            Console.WriteLine(Person.Name);
 
             Console.WriteLine("hello world");
             Console.ReadKey();
@@ -20,28 +19,19 @@ namespace ConsoleApplication
 
     public class Person
     {
-        private string name;
-        public static Person person;
+        private static string name;
 
-        public string Name
-        {
-            get { return name; }
-        }
-
-        // 私有构造函数，只能在类内部调用。
-        // 也就是说类的实例化，只能在类定义时被实例化
-        private Person()
+        // 静态构造函数，仅执行一次。
+        static Person()
         {
             Console.WriteLine("私有构造函数被调用。");
-            this.name = "grant";
+            //this.name = "grant";
+            name = "grant";
         }
 
-        // 静态方法：用于返回类的实例
-        public static Person GetInstance()
+        public static string Name
         {
-            person = new Person();
-
-            return person;
+            get { return name; }
         }
     }
 
