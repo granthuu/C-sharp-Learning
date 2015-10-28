@@ -9,10 +9,16 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Person st = new Person();
-            st.PrintString("grant");
-            st.PrintString(32);
-            st.PrintString("grant", 33);
+            //Person st = new Person();
+            //st.PrintString("grant");
+            //st.PrintString(32);
+            //st.PrintString("grant", 33);
+
+            // 构造函数
+            Person st1 = new Person();
+            Person st2 = new Person("grant");
+            Console.WriteLine(st1.Name);
+            Console.WriteLine(st2.Name);
 
 
             Console.WriteLine("hello world");
@@ -56,6 +62,17 @@ namespace ConsoleApplication
         public void PrintString(string name, int age)
         {
             Console.WriteLine("name: {0}, age: {1}", name, age);
+        }
+
+
+        // 构造函数
+        public Person()
+        {
+            name = "paul";
+        }
+        public Person(string name)
+        {
+            this.name = name;
         }
     }
 
