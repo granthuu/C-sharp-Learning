@@ -9,9 +9,11 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Person st = new Person();
-            st.Name = "grant";
-            st.PrintString(st.Name);
+            //Person st = new Person();
+            //st.Name = "grant";
+            //st.PrintString(st.Name);
+
+            Person.PrintString("grant");
 
             Console.WriteLine("hello world");
             Console.ReadKey();
@@ -31,7 +33,8 @@ namespace ConsoleApplication
         }
 
         // add method
-        public void PrintString(string name)
+        //public void PrintString(string name)  
+        public static void PrintString(string name)
         {
             Console.WriteLine("name: " + name);
         }
