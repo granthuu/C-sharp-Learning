@@ -9,8 +9,11 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Person.Name);
-            Console.WriteLine(Person.Name);
+            Person st = new Person();
+            st.Name = "grant";
+            //st.Age = -5;
+            st.Age = 5;
+            Console.WriteLine("name: {0}, age: {1}", st.Name, st.Age);
 
             Console.WriteLine("hello world");
             Console.ReadKey();
@@ -19,19 +22,29 @@ namespace ConsoleApplication
 
     public class Person
     {
-        private static string name;
+        // 1. 定义私有数据字段
+        private string _name;
+        private int _age;
 
-        // 静态构造函数，仅执行一次。
-        static Person()
+        // 2. 利用属性，封装私有字段。
+        public string Name
         {
-            Console.WriteLine("私有构造函数被调用。");
-            //this.name = "grant";
-            name = "grant";
+            get { return _name; }
+            set { _name = value; }
         }
 
-        public static string Name
+        public int Age
         {
-            get { return name; }
+            get { return _age; }
+            set
+            {
+                if ((value < 0) || (value > 120))
+                {
+                    throw (new ArgumentOutOfRangeException("ageIntPropery", value, "age must more than 0, less than 120."));
+                }
+                else
+                    _age = value;
+            }
         }
     }
 
