@@ -9,16 +9,8 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            //Person st = new Person();
-            //st.PrintString("grant");
-            //st.PrintString(32);
-            //st.PrintString("grant", 33);
-
-            // 构造函数
-            Person st1 = new Person();
-            Person st2 = new Person("grant");
-            Console.WriteLine(st1.Name);
-            Console.WriteLine(st2.Name);
+            Person person = Person.GetInstance();
+            Console.WriteLine("name: {0}", person.Name);
 
 
             Console.WriteLine("hello world");
@@ -29,50 +21,27 @@ namespace ConsoleApplication
     public class Person
     {
         private string name;
-        private int age;
+        public static Person person;
 
-        // add attribute
         public string Name
         {
-            get { return name;  }
-            set { name = value; }
+            get { return name; }
         }
 
-        // add method
-        //public void PrintString(string name)  
-        public void PrintString(string name)
+        // 私有构造函数，只能在类内部调用。
+        // 也就是说类的实例化，只能在类定义时被实例化
+        private Person()
         {
-            Console.WriteLine("name: " + name);
+            Console.WriteLine("私有构造函数被调用。");
+            this.name = "grant";
         }
 
-        // 不属于方法重载: 含有返回值
-        //public int PrintString(string name)
-        //{
-        //    Console.WriteLine("name: " + name);
-        //    return 1;
-        //}
-
-
-
-        public void PrintString(int age)
+        // 静态方法：用于返回类的实例
+        public static Person GetInstance()
         {
-            Console.WriteLine("age: " + age);
-        }
+            person = new Person();
 
-        public void PrintString(string name, int age)
-        {
-            Console.WriteLine("name: {0}, age: {1}", name, age);
-        }
-
-
-        // 构造函数
-        public Person()
-        {
-            name = "paul";
-        }
-        public Person(string name)
-        {
-            this.name = name;
+            return person;
         }
     }
 
