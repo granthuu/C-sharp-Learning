@@ -9,17 +9,18 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            // Horse horse = new Horse();
-            Animal horse = new Horse();
-            horse.Age = 1;
-            Console.WriteLine("horse age is: {0}", horse.Age);
-            horse.Voice();
+            Person p1 = new Person();
+            p1.Age = 18;
 
-            // Sheep sheep = new Sheep();
-            Animal sheep = new Sheep();
-            sheep.Age = 2;
-            Console.WriteLine("sheep age is: {0}", sheep.Age);
-            sheep.Voice();
+            Person p2 = new Person();
+            p2.Age = 22;
+
+            if (p1.compareTo(p2) > 0)
+                Console.WriteLine("p1 > p2");
+            else if (p1.compareTo(p2) < 0)
+                Console.WriteLine("p1 < p2");
+            else
+                Console.WriteLine("p1 = p2");
 
 
             Console.WriteLine("\r\nhello world");
@@ -27,51 +28,32 @@ namespace ConsoleApplication
         }
     }
 
-    // 定义父类
-    public class Animal
+    public class Person : Interface
     {
-        private int _age;
-        public int Age 
+        int age;
+
+        public int Age
         {
-            get { return _age; }
-            set 
-            {
-                if(value <0 || value > 10)
-                    throw(new ArgumentOutOfRangeException("ageIntPropery", value, "age must between [0,10]."));
-                else
-                    _age = value;
-            }
+            get { return age;  }
+            set { age = value; }
         }
 
-        // 对于每个动物的子类来说，每个子类发出的声音是不一样的
-        // 每个动物的子类需要对该方法进行重新定义：多态。
-        public virtual void Voice()
+        public int compareTo(object value)
         {
-            Console.WriteLine("animal voice.");
-        }
-    }
+            if (value == null)
+                return 1;
 
-    // 定义子类： 继承
-    // 子类应该重写基类的方法，每个子类发出的声音是不一样的。
-    public class Horse : Animal
-    { 
-        // 通过override关键字来重写父类方法
-        public override void Voice()
-        {
-            // 调用基类的方法
-            base.Voice();
-            Console.WriteLine("horse voice .....");
-        }
-    }
+            Person otherP = (Person)value;
+            if (this.Age < otherP.Age)
+                return -1;
+            else if (this.Age > otherP.Age)
+                return 1;
 
-    // 子类：重写方法
-    public class Sheep : Animal
-    {
-        public override void Voice()
-        {
-            base.Voice();
-            Console.WriteLine("sheep voice ........");
+            return 0;
         }
     }
 
 }
+
+
+
