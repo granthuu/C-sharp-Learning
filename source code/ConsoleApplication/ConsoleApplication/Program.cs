@@ -9,43 +9,46 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Person st = new Person();
-            st.Name = "grant";
-            //st.Age = -5;
-            st.Age = 5;
-            Console.WriteLine("name: {0}, age: {1}", st.Name, st.Age);
+            Horse horse = new Horse();
+            horse.Age = 1;
+            Console.WriteLine("horse age is: {0}", horse.Age);
+
+            Sheep sheep = new Sheep();
+            sheep.Age = 2;
+            Console.WriteLine("sheep age is: {0}", sheep.Age);
+
 
             Console.WriteLine("hello world");
             Console.ReadKey();
         }
     }
 
-    public class Person
+    // 定义父类
+    public class Animal
     {
-        // 1. 定义私有数据字段
-        private string _name;
         private int _age;
-
-        // 2. 利用属性，封装私有字段。
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        public int Age
+        public int Age 
         {
             get { return _age; }
-            set
+            set 
             {
-                if ((value < 0) || (value > 120))
-                {
-                    throw (new ArgumentOutOfRangeException("ageIntPropery", value, "age must more than 0, less than 120."));
-                }
+                if(value <0 || value > 10)
+                    throw(new ArgumentOutOfRangeException("ageIntPropery", value, "age must between [0,10]."));
                 else
                     _age = value;
             }
         }
+    }
+
+    // 定义子类： 继承
+    public class Horse : Animal
+    { 
+        
+    }
+
+    public class Sheep : Animal
+    { 
+    
     }
 
 }
