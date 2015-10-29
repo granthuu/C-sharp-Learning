@@ -9,18 +9,16 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Person p1 = new Person();
-            p1.Age = 18;
+            Speaker speaker = new Speaker();
+            // 1. 类直接调用方法。
+            speaker.SayHello();
 
-            Person p2 = new Person();
-            p2.Age = 22;
+            // 2. 接口调用方法。
+            IChineseGreeting iChineseG = (IChineseGreeting)speaker;
+            iChineseG.SayHello();
 
-            if (p1.compareTo(p2) > 0)
-                Console.WriteLine("p1 > p2");
-            else if (p1.compareTo(p2) < 0)
-                Console.WriteLine("p1 < p2");
-            else
-                Console.WriteLine("p1 = p2");
+            IAmericanGreeting iAmericanG = (IAmericanGreeting)speaker;
+            iAmericanG.SayHello();
 
 
             Console.WriteLine("\r\nhello world");
@@ -28,28 +26,13 @@ namespace ConsoleApplication
         }
     }
 
-    public class Person : Interface
+    public class Speaker : IChineseGreeting, IAmericanGreeting
     {
-        int age;
-
-        public int Age
+        // 隐式接口实现，SayHello函数并没有制定是哪一个接口实现。
+        // 隐式接口是public，类和接口可以直接访问。
+        public void SayHello()
         {
-            get { return age;  }
-            set { age = value; }
-        }
-
-        public int compareTo(object value)
-        {
-            if (value == null)
-                return 1;
-
-            Person otherP = (Person)value;
-            if (this.Age < otherP.Age)
-                return -1;
-            else if (this.Age > otherP.Age)
-                return 1;
-
-            return 0;
+            Console.WriteLine("hello");
         }
     }
 
