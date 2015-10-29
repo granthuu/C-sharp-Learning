@@ -10,10 +10,10 @@ namespace ConsoleApplication
         static void Main(string[] args)
         {
             Speaker speaker = new Speaker();
-            // 1. 类直接调用方法。
-            speaker.SayHello();
+            // 1. 不能利用类来直接调用方法。
+            // speaker.
 
-            // 2. 接口调用方法。
+            // 2. 只能利用接口调用方法。
             IChineseGreeting iChineseG = (IChineseGreeting)speaker;
             iChineseG.SayHello();
 
@@ -28,9 +28,13 @@ namespace ConsoleApplication
 
     public class Speaker : IChineseGreeting, IAmericanGreeting
     {
-        // 隐式接口实现，SayHello函数并没有制定是哪一个接口实现。
-        // 隐式接口是public，类和接口可以直接访问。
-        public void SayHello()
+        // 显式接口，方法定义
+        void IChineseGreeting.SayHello()
+        {
+            Console.WriteLine("你好");
+        }
+
+        void IAmericanGreeting.SayHello()
         {
             Console.WriteLine("hello");
         }
