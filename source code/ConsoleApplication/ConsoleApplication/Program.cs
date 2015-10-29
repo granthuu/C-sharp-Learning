@@ -9,16 +9,13 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Speaker speaker = new Speaker();
-            // 1. 不能利用类来直接调用方法。
-            // speaker.
+            Dog dog = new Dog();
+            dog.EatFood();
+            dog.Walk();
+            dog.show();
 
-            // 2. 只能利用接口调用方法。
-            IChineseGreeting iChineseG = (IChineseGreeting)speaker;
-            iChineseG.SayHello();
-
-            IAmericanGreeting iAmericanG = (IAmericanGreeting)speaker;
-            iAmericanG.SayHello();
+            // 无法创建抽象类接口。
+            Animal animal = new Animal();
 
 
             Console.WriteLine("\r\nhello world");
@@ -26,17 +23,25 @@ namespace ConsoleApplication
         }
     }
 
-    public class Speaker : IChineseGreeting, IAmericanGreeting
+    // abstract：抽象类，不能实例化
+    public abstract class Animal
     {
-        // 显式接口，方法定义
-        void IChineseGreeting.SayHello()
+        public void EatFood()
         {
-            Console.WriteLine("你好");
+            Console.WriteLine("eat food");
         }
 
-        void IAmericanGreeting.SayHello()
+        public void Walk()
         {
-            Console.WriteLine("hello");
+            Console.WriteLine("walk");
+        }
+    }
+
+    public class Dog : Animal, IAnimalShow
+    {
+        public void show()
+        {
+            Console.WriteLine("dog show");
         }
     }
 

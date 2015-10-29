@@ -5,18 +5,8 @@ using System.Text;
 
 namespace ConsoleApplication
 {
-    interface Interface
+    public interface IAnimalShow
     {
-        int compareTo(object other);
-    }
-
-    interface IChineseGreeting
-    {
-        void SayHello();
-    }
-
-    interface IAmericanGreeting
-    {
-        void SayHello();
+        void show();
     }
 }
