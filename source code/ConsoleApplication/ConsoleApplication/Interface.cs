@@ -5,8 +5,5 @@ using System.Text;
 
 namespace ConsoleApplication
 {
-    public interface IAnimalShow
-    {
-        void show();
-    }
+    
 }

@@ -7,44 +7,39 @@ namespace ConsoleApplication
 {
     class Program
     {
+        // 1. 定义一个委托类型
+        delegate void MyDelegate(int para1, int para2);
+
         static void Main(string[] args)
         {
-            Dog dog = new Dog();
-            dog.EatFood();
-            dog.Walk();
-            dog.show();
+            // 2. 声明委托变量
+            MyDelegate d;
 
-            // 无法创建抽象类接口。
-            Animal animal = new Animal();
+            // 3. 实体化委托变量
+            d = new MyDelegate(new Program().Add);
 
+            // 4. 委托变量直接调用
+            d(1, 2);
+
+            // 5. 间接利用方法调用委托定义的函数。委托相当于函数指针作用。
+            MyMethod(d);
 
             Console.WriteLine("\r\nhello world");
             Console.ReadKey();
         }
-    }
 
-    // abstract：抽象类，不能实例化
-    public abstract class Animal
-    {
-        public void EatFood()
+        private void Add(int para1, int para2)
         {
-            Console.WriteLine("eat food");
+            int sum = para1 + para2;
+            Console.WriteLine("sum: "+sum);
         }
 
-        public void Walk()
+        // 传入的参数为委托类型，相当于函数指针。
+        private static void MyMethod(MyDelegate mydelegate)
         {
-            Console.WriteLine("walk");
+            mydelegate(1, 2);
         }
     }
-
-    public class Dog : Animal, IAnimalShow
-    {
-        public void show()
-        {
-            Console.WriteLine("dog show");
-        }
-    }
-
 }
 
 
