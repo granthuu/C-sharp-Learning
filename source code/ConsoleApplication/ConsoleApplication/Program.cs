@@ -5,31 +5,23 @@ using System.Text;
 
 namespace ConsoleApplication
 {
-    public class RefClass
-    {
-        public int addNum;
-    }
-
-
     public class Program
     {
         public static void Main(string[] args)
         {
-            RefClass refclass = new RefClass();
-            refclass.addNum = 1;
+            Console.WriteLine("string test");
 
-            Program program = new Program();
-            program.AddOn(refclass);
-
-            Console.WriteLine("before, num: " + refclass.addNum);
+            string str = "old string";
+            ChangStr(str);
+            Console.WriteLine("changed, str: " + str);
 
             Console.ReadKey();
         }
 
-        private void AddOn(RefClass refclass)
+        public static void ChangStr(string str)
         {
-            refclass.addNum = 5;
-            Console.WriteLine("after, num: " + refclass.addNum);
+            str = "new string";
+            Console.WriteLine(str);
         }
     }
 }
